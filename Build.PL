@@ -1,3 +1,4 @@
+use 5.008;
 use strict;
 use warnings;
 use Module::Build;
@@ -15,13 +16,19 @@ my $builder = Module::Build->new(
 		'Test::Exception' => 0,
 		'Module::Build' => 0,
 	},
-	requires	        => {
+	requires            => {
 		perl            => 5.008,
 		'Sub::Exporter' => 0,
 	},
 	add_to_cleanup      => [ 'Const-Fast-*' ],
 	create_makefile_pl  => 'traditional',
 	sign                => 1,
+	meta_merge          => {
+		resources       => {
+			bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Const-Fast',
+			repository  => 'http://github.com/Leont/const-fast'
+		}
+	},
 );
 
 $builder->create_build_script();

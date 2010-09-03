@@ -1,12 +1,14 @@
 ---
 name: Const-Fast
-version: 0.004
+version: 0.005
 author:
   - 'Leon Timmermans <leont@cpan.org>'
-abstract: 'Facility for creating read-only scalars, arrays, hashes'
+abstract: 'Facility for creating read-only scalars, arrays, and hashes'
 license: perl
 resources:
+  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Const-Fast
   license: http://dev.perl.org/licenses/
+  repository: http://github.com/Leont/const-fast
 build_requires:
   Module::Build: 0
   Test::Exception: 0
@@ -19,7 +21,7 @@ configure_requires:
 provides:
   Const::Fast:
     file: lib/Const/Fast.pm
-    version: 0.004
+    version: 0.005
 generated_by: Module::Build version 0.340201
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
