@@ -1,6 +1,6 @@
 ---
 name: Const-Fast
-version: 0.005
+version: 0.006
 author:
   - 'Leon Timmermans <leont@cpan.org>'
 abstract: 'Facility for creating read-only scalars, arrays, and hashes'
@@ -21,7 +21,7 @@ configure_requires:
 provides:
   Const::Fast:
     file: lib/Const/Fast.pm
-    version: 0.005
+    version: 0.006
 generated_by: Module::Build version 0.340201
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
