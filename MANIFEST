@@ -1,13 +1,15 @@
-Build.PL
 Changes
-MANIFEST
-README
-lib/Const/Fast.pm
-t/00-load.t
-t/10-basics.t
-t/pod-coverage.t
-t/pod.t
 LICENSE
-Makefile.PL
+MANIFEST
+META.json
 META.yml
-SIGNATURE    Added here by Module::Build
+Makefile.PL
+README
+SIGNATURE
+dist.ini
+lib/Const/Fast.pm
+t/00-compile.t
+t/10-basics.t
+t/release-kwalitee.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t

@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.61.
+signed via the Module::Signature module, version 0.63.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,22 +14,24 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 8c2f1223d25b6cdbc4b82c47dbde4ceef73f0662 Build.PL
-SHA1 56800816fd53d19dcd773fded07d9951ff351b2c Changes
-SHA1 9e627682091372eabbb50d3af3404656d87eb080 LICENSE
-SHA1 19ad62ecc49be752ae9b9b1a82e5607eb80c484a MANIFEST
-SHA1 bbf0686e9a20a9f170ea05d917e87b3cf4afe369 META.yml
-SHA1 0b1b509e7b0e8b2e3e3c58bb6ee8cb6d02431404 Makefile.PL
-SHA1 c397f10c3e94773a406b63e0c903f564142ec985 README
-SHA1 23835fa9f672fd2eb8bedd5f43616df713db91f9 lib/Const/Fast.pm
-SHA1 23d0e8c65795b758d7bff52a2ca136567384ed90 t/00-load.t
-SHA1 3b484a5f4ba555213b78fa26b0773df184d01dbd t/10-basics.t
-SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
-SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+SHA1 1e6c70f80c2c70cfd53ccf01c45d71467449dfb2 Changes
+SHA1 74663facebd90fca4be8d1459c8c0c9e28ea9314 LICENSE
+SHA1 1a6026bfa09f68b57a218384fdd1f79d5a1078cd MANIFEST
+SHA1 7a8d9a84c79909d9bdfbb9ab6780d0c0d3bd6d1e META.json
+SHA1 af60964e634af2fa36292790fb3c05485ca0f4fc META.yml
+SHA1 2d59a41e3539166e6b0a58a919e76aff7507f9dd Makefile.PL
+SHA1 f34efb7874c2be46fbd9ab6adcd3138df3dd3467 README
+SHA1 65b25b814c51f550214ff894ce5c179d435691a3 dist.ini
+SHA1 09434a2f30b83f9b7bab5c1ae7167576ed2061d7 lib/Const/Fast.pm
+SHA1 b101b945f6f54d0f35f1232a15ff49686e69f772 t/00-compile.t
+SHA1 a08603cbccedf73ad5106aeb92e0e961bdc29621 t/10-basics.t
+SHA1 6725b17b3d2321ce71cd5059fac582fa8badda53 t/release-kwalitee.t
+SHA1 0e13e0b55897dee334c540f93b6cd25abb4033e9 t/release-pod-coverage.t
+SHA1 665394a14bfbf02f89c85bef743c48386abea457 t/release-pod-syntax.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkynNvYACgkQTd+EWiaICwp9pQCgrchjk/prjj08gO8skjylqJja
-/d8AnR5LSbHp3OhbP6WgBzVOjxpGu3hf
-=duzH
+iEYEARECAAYFAk1cSIoACgkQTd+EWiaICwrKpQCglrbX4KA9upb2RTh7essojByX
+YmIAnR85ndE8BLXE2WDD3Iylo8+XPqmg
+=bHNX
 -----END PGP SIGNATURE-----

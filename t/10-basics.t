@@ -1,10 +1,18 @@
 #!perl
+#
+# This file is part of Const-Fast
+#
+# This software is copyright (c) 2010 by Leon Timmermans.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
 
 # Test the Const function
 
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 17;
+use Test::More tests => 20;
 use Test::Exception;
 
 use Const::Fast;
@@ -13,15 +21,16 @@ sub throws_readonly(&@) {
 	my ($sub, $desc) = @_;
 	my ($file, $line) = (caller)[1,2];
 	my $error = qr/\AModification of a read-only value attempted at \Q$file\E line $line\.\Z/;
-	&throws_ok($sub, $error, $desc);
-	return;
+	@_ = ($sub, $error, $desc);
+	goto &throws_ok;
 }
 
 sub throws_reassign(&@) {
 	my ($sub, $desc) = @_;
 	my ($file, $line) = (caller)[1,2];
 	my $error = qr/\AAttempt to reassign a readonly \w+ at \Q$file\E line $line\Z/;
-	&throws_ok($sub, $error, $desc);
+	@_ = ($sub, $error, $desc);
+	goto &throws_ok;
 	return;
 }
 
@@ -43,9 +52,14 @@ throws_readonly { const my %hash => (key1 => "value", key2 => "value2"); $hash{k
 my %computed_values = qw/a A b B c C d D/;
 lives_ok { const my %a2 => %computed_values } 'Hash, computed values';
 
-my %foo;
+use Data::Dumper;
+my (%foo, %recur);
 $foo{bar} = \%foo;
-lives_ok { const my %recur => ( baz => \%foo ) } 'recursive structures are handles properly';
+lives_ok { const %recur => ( baz => \%foo ) } 'recursive structures are handles properly';
+
+throws_readonly { $recur{baz} = 'foo' };
+throws_readonly { $recur{baz}{bar} = 'foo' };
+throws_readonly { $recur{baz}{bar}{bar} = 'foo' };
 
 const my $scalar => 'a scalar value';
 const my @array => 'an', 'array', 'value';
