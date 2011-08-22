@@ -1,10 +1,10 @@
 Revision history for Const-Fast
 
-0.00701  2011-08-21 00:00:30 US/Pacific
-         Follow scalar references
+0.008     2011-08-22 13:14:05 Europe/Amsterdam
+          Recurse into scalar references too
 
 0.007     2011-02-16 22:58:27 Europe/Amsterdam
-         Deep clone earlier and using Storable::dclone
+          Deep clone earlier and using Storable::dclone
 
 0.006    2010-10-02
          Don't make objects readonly. This also fixes RT#61726

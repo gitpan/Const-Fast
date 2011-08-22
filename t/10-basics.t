@@ -1,18 +1,10 @@
 #!perl
-#
-# This file is part of Const-Fast
-#
-# This software is copyright (c) 2010 by Leon Timmermans.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 
 # Test the Const function
 
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 25;
+use Test::More tests => 23;
 use Test::Exception;
 
 use Const::Fast;
@@ -21,28 +13,23 @@ sub throws_readonly(&@) {
 	my ($sub, $desc) = @_;
 	my ($file, $line) = (caller)[1,2];
 	my $error = qr/\AModification of a read-only value attempted at \Q$file\E line $line\.\Z/;
-	@_ = ($sub, $error, $desc);
-	goto &throws_ok;
+	local $Test::Builder::Level = $Test::Builder::Level + 1;
+	return &throws_ok($sub, $error, $desc);
 }
 
 sub throws_reassign(&@) {
 	my ($sub, $desc) = @_;
 	my ($file, $line) = (caller)[1,2];
 	my $error = qr/\AAttempt to reassign a readonly \w+ at \Q$file\E line $line\Z/;
-	@_ = ($sub, $error, $desc);
-	goto &throws_ok;
-	return;
+	local $Test::Builder::Level = $Test::Builder::Level + 1;
+	return &throws_ok($sub, $error, $desc);
 }
 
 lives_ok { const my $scalar => 45 } 'Create scalar';
 
 throws_readonly { const my $scalar => 45; $scalar = 45 } 'Modify scalar';
 
-lives_ok { my $ref = \do{45}; $$ref = 45 } 'Modify ref to scalar';
-
 throws_readonly { const my $ref => \do{45}; $$ref = 45 } 'Modify ref to scalar';
-
-lives_ok { my $ref = \\do{45}; $$$ref = 45 } 'Modify ref to ref to scalar';
 
 throws_readonly { const my $ref => \\do{45};  $$ref = 45 } 'Modify ref to ref';
 throws_readonly { const my $ref => \\do{45}; $$$ref = 45 } 'Modify ref to ref to scalar';

@@ -4,7 +4,7 @@
       "Leon Timmermans <fawaka@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300000, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110440",
    "license" : [
       "perl_5"
    ],
@@ -25,9 +25,7 @@
             "Scalar::Util" : 0,
             "Storable" : 0,
             "Sub::Exporter" : 0,
-            "perl" : "5.008",
-            "strict" : 0,
-            "warnings" : 0
+            "perl" : "5.008"
          }
       },
       "test" : {
@@ -45,8 +43,13 @@
       "bugtracker" : {
          "mailto" : "bug-const-fast at rt.cpan.org",
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Const-Fast"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/Leont/const-fast.git",
+         "web" : "http://github.com/Leont/const-fast"
       }
    },
-   "version" : "0.00701"
+   "version" : "0.008"
 }
 

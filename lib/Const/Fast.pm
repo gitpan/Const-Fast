@@ -1,14 +1,6 @@
-#
-# This file is part of Const-Fast
-#
-# This software is copyright (c) 2010 by Leon Timmermans.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 package Const::Fast;
-{
-  $Const::Fast::VERSION = '0.00701';
+BEGIN {
+  $Const::Fast::VERSION = '0.008';
 }
 
 use 5.008;
@@ -81,7 +73,7 @@ Const::Fast - Facility for creating read-only scalars, arrays, and hashes
 
 =head1 VERSION
 
-version 0.00701
+version 0.008
 
 =head1 SYNOPSIS
 
