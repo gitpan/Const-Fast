@@ -4,7 +4,7 @@
       "Leon Timmermans <fawaka@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110440",
+   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -25,7 +25,9 @@
             "Scalar::Util" : 0,
             "Storable" : 0,
             "Sub::Exporter" : 0,
-            "perl" : "5.008"
+            "perl" : "5.008",
+            "strict" : 0,
+            "warnings" : 0
          }
       },
       "test" : {
@@ -34,7 +36,7 @@
             "File::Find" : 0,
             "File::Temp" : 0,
             "Test::Exception" : 0,
-            "Test::More" : 0
+            "Test::More" : "0.88"
          }
       }
    },
@@ -50,6 +52,6 @@
          "web" : "http://github.com/Leont/const-fast"
       }
    },
-   "version" : "0.008"
+   "version" : "0.009"
 }
 

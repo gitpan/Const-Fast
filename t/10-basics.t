@@ -4,7 +4,7 @@
 
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 23;
+use Test::More 0.88;
 use Test::Exception;
 
 use Const::Fast;
@@ -80,3 +80,6 @@ isa_ok $rx, 'Regexp';
 const my %rx => ( foo => qr/foo/ );
 isa_ok $rx{foo}, 'Regexp' or diag( Dumper( \%rx ) ); # fails
 
+throws_ok { &const(1, 1) } qr/^Invalid first argument, need an reference at/, 'First argument must be a reference after prototypes';
+
+done_testing;

@@ -1,6 +1,6 @@
 package Const::Fast;
-BEGIN {
-  $Const::Fast::VERSION = '0.008';
+{
+  $Const::Fast::VERSION = '0.009';
 }
 
 use 5.008;
@@ -39,6 +39,7 @@ sub _make_readonly {
 ## no critic (ProhibitSubroutinePrototypes, ManyArgs)
 sub const(\[$@%]@) {
 	my (undef, @args) = @_;
+	croak 'Invalid first argument, need an reference' if not defined reftype($_[0]);
 	croak 'Attempt to reassign a readonly variable' if &Internals::SvREADONLY($_[0]);
 	if (reftype $_[0] eq 'SCALAR') {
 		croak 'No value for readonly variable' if @args == 0;
@@ -73,7 +74,7 @@ Const::Fast - Facility for creating read-only scalars, arrays, and hashes
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

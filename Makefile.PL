@@ -9,31 +9,33 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Facility for creating read-only scalars, arrays, and hashes',
-  'AUTHOR' => 'Leon Timmermans <fawaka@gmail.com>',
-  'BUILD_REQUIRES' => {
-    'Data::Dumper' => '0',
-    'File::Find' => '0',
-    'File::Temp' => '0',
-    'Test::Exception' => '0',
-    'Test::More' => '0'
+  "ABSTRACT" => "Facility for creating read-only scalars, arrays, and hashes",
+  "AUTHOR" => "Leon Timmermans <fawaka\@gmail.com>",
+  "BUILD_REQUIRES" => {
+    "Data::Dumper" => 0,
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Test::Exception" => 0,
+    "Test::More" => "0.88"
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Const-Fast',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Const::Fast',
-  'PREREQ_PM' => {
-    'Carp' => '0',
-    'Scalar::Util' => '0',
-    'Storable' => '0',
-    'Sub::Exporter' => '0'
+  "DISTNAME" => "Const-Fast",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Const::Fast",
+  "PREREQ_PM" => {
+    "Carp" => 0,
+    "Scalar::Util" => 0,
+    "Storable" => 0,
+    "Sub::Exporter" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  'VERSION' => '0.008',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.009",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 
