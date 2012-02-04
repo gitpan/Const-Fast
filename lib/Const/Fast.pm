@@ -1,6 +1,6 @@
 package Const::Fast;
 {
-  $Const::Fast::VERSION = '0.009';
+  $Const::Fast::VERSION = '0.010';
 }
 
 use 5.008;
@@ -74,7 +74,7 @@ Const::Fast - Facility for creating read-only scalars, arrays, and hashes
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
