@@ -1,5 +1,9 @@
 Revision history for Const-Fast
 
+0.011     2012-02-24 22:48:26 Europe/Amsterdam
+          Accept references to references as subject
+          Really fix compatibility with Carp 1.25
+
 0.010     2012-02-04 12:54:09 Europe/Amsterdam
           Fix compatibility with dotted Carp (1.25?)
 
