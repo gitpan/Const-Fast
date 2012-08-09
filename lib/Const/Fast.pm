@@ -1,6 +1,6 @@
 package Const::Fast;
 {
-  $Const::Fast::VERSION = '0.011';
+  $Const::Fast::VERSION = '0.012';
 }
 
 use 5.008;
@@ -9,7 +9,7 @@ use warnings FATAL => 'all';
 
 use Scalar::Util qw/reftype blessed/;
 use Carp qw/croak/;
-use Sub::Exporter -setup => { exports => [qw/const/], groups => { default => [qw/const/] } };
+use Sub::Exporter::Progressive -setup => { exports => [qw/const/], groups => { default => [qw/const/] } };
 use Storable qw/dclone/;
 
 ## no critic (RequireArgUnpacking, ProhibitAmpersandSigils)
@@ -74,7 +74,7 @@ Const::Fast - Facility for creating read-only scalars, arrays, and hashes
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 

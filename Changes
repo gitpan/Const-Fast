@@ -1,5 +1,9 @@
 Revision history for Const-Fast
 
+0.012     2012-08-09 13:51:29 Europe/Bucharest
+          Depend on Test::Exception 0.28
+          Switch to Sub::Exporter::Progressive, for a faster startup
+
 0.011     2012-02-24 22:48:26 Europe/Amsterdam
           Accept references to references as subject
           Really fix compatibility with Carp 1.25

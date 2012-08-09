@@ -15,7 +15,7 @@ my %WriteMakefileArgs = (
     "Data::Dumper" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
-    "Test::Exception" => 0,
+    "Test::Exception" => "0.29",
     "Test::More" => "0.88"
   },
   "CONFIGURE_REQUIRES" => {
@@ -30,10 +30,11 @@ my %WriteMakefileArgs = (
     "Scalar::Util" => 0,
     "Storable" => 0,
     "Sub::Exporter" => 0,
+    "Sub::Exporter::Progressive" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.011",
+  "VERSION" => "0.012",
   "test" => {
     "TESTS" => "t/*.t"
   }
