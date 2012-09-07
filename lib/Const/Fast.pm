@@ -1,6 +1,6 @@
 package Const::Fast;
 {
-  $Const::Fast::VERSION = '0.012';
+  $Const::Fast::VERSION = '0.013';
 }
 
 use 5.008;
@@ -10,7 +10,13 @@ use warnings FATAL => 'all';
 use Scalar::Util qw/reftype blessed/;
 use Carp qw/croak/;
 use Sub::Exporter::Progressive -setup => { exports => [qw/const/], groups => { default => [qw/const/] } };
-use Storable qw/dclone/;
+
+sub _dclone($) {
+	require Storable;
+	no warnings 'redefine';
+	*_dclone = \&Storable::dclone;
+	goto &Storable::dclone;
+}
 
 ## no critic (RequireArgUnpacking, ProhibitAmpersandSigils)
 # The use of $_[0] is deliberate and essential, to be able to use it as an lvalue and to keep the refcount down.
@@ -19,7 +25,7 @@ sub _make_readonly {
 	my (undef, $dont_clone) = @_;
 	if (my $reftype = reftype $_[0] and not blessed($_[0]) and not &Internals::SvREADONLY($_[0])) {
 		my $needs_cloning = !$dont_clone && &Internals::SvREFCNT($_[0]) > 1;
-		$_[0] = dclone($_[0]) if $needs_cloning;
+		$_[0] = _dclone($_[0]) if $needs_cloning;
 		&Internals::SvREADONLY($_[0], 1);
 		if ($reftype eq 'SCALAR' || $reftype eq 'REF') {
 			_make_readonly(${ $_[0] }, 1);
@@ -65,7 +71,7 @@ sub const(\[$@%]@) {
 # ABSTRACT: Facility for creating read-only scalars, arrays, and hashes
 
 
-
+__END__
 =pod
 
 =head1 NAME
@@ -74,7 +80,7 @@ Const::Fast - Facility for creating read-only scalars, arrays, and hashes
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
@@ -126,7 +132,4 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
 
