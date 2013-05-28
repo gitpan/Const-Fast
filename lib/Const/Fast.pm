@@ -1,6 +1,6 @@
 package Const::Fast;
 {
-  $Const::Fast::VERSION = '0.013';
+  $Const::Fast::VERSION = '0.014';
 }
 
 use 5.008;
@@ -9,7 +9,7 @@ use warnings FATAL => 'all';
 
 use Scalar::Util qw/reftype blessed/;
 use Carp qw/croak/;
-use Sub::Exporter::Progressive -setup => { exports => [qw/const/], groups => { default => [qw/const/] } };
+use Sub::Exporter::Progressive 0.001007 -setup => { exports => [qw/const/], groups => { default => [qw/const/] } };
 
 sub _dclone($) {
 	require Storable;
@@ -21,11 +21,12 @@ sub _dclone($) {
 ## no critic (RequireArgUnpacking, ProhibitAmpersandSigils)
 # The use of $_[0] is deliberate and essential, to be able to use it as an lvalue and to keep the refcount down.
 
+my %skip = map { $_ => 1 } qw/CODE GLOB/;
+
 sub _make_readonly {
 	my (undef, $dont_clone) = @_;
 	if (my $reftype = reftype $_[0] and not blessed($_[0]) and not &Internals::SvREADONLY($_[0])) {
-		my $needs_cloning = !$dont_clone && &Internals::SvREFCNT($_[0]) > 1;
-		$_[0] = _dclone($_[0]) if $needs_cloning;
+		$_[0] = _dclone($_[0]) if !$dont_clone && &Internals::SvREFCNT($_[0]) > 1 && !$skip{$reftype};
 		&Internals::SvREADONLY($_[0], 1);
 		if ($reftype eq 'SCALAR' || $reftype eq 'REF') {
 			_make_readonly(${ $_[0] }, 1);
@@ -70,8 +71,8 @@ sub const(\[$@%]@) {
 
 # ABSTRACT: Facility for creating read-only scalars, arrays, and hashes
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -80,7 +81,7 @@ Const::Fast - Facility for creating read-only scalars, arrays, and hashes
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -100,7 +101,7 @@ version 0.013
 
 This the only function of this module and it is exported by default. It takes a scalar, array or hash lvalue as first argument, and a list of one or more values depending on the type of the first argument as the value for the variable. It will set the variable to that value and subsequently make it readonly. Arrays and hashes will be made deeply readonly.
 
-Exporting is done using Sub::Exporter for flexibility on import.
+Exporting is done using Sub::Exporter::Progressive. You may need to depend on Sub::Exporter explicitly if you need the latter's flexibility.
 
 =head1 RATIONALE
 
@@ -132,4 +133,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
